@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="ap_main" prefHeight="654.0" prefWidth="518.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <AnchorPane fx:id="ap_topBar" layoutY="-1.0" prefHeight="82.0" prefWidth="528.0" style="-fx-background-color: #3d4956;">
+         <children>
+            <ImageView fx:id="btn_newF" fitHeight="40.0" fitWidth="40.0" layoutX="180.0" layoutY="21.0" onMousePressed="#visibilityWindow" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/newFly.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_newO" fitHeight="40.0" fitWidth="46.0" layoutX="49.0" layoutY="21.0" onMousePressed="#visibilityWindow" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/addOper.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_shutdown" fitHeight="40.0" fitWidth="33.0" layoutX="442.0" layoutY="25.0" onKeyPressed="#initialize" onMousePressed="#visibilityWindow" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/shutdown.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_viewF" fitHeight="40.0" fitWidth="40.0" layoutX="309.0" layoutY="21.0" onMousePressed="#visibilityWindow" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/viewFly.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+      <AnchorPane fx:id="ap_addOper" layoutY="98.0" prefHeight="580.0" prefWidth="528.0" style="-fx-background-color: #3d4956;" visible="false">
+         <children>
+            <Label layoutX="35.0" layoutY="51.0" prefHeight="32.0" prefWidth="143.0" text="Имя" textFill="#c6c6c6">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txt_firstName" layoutX="204.0" layoutY="48.0" prefHeight="32.0" prefWidth="290.0" />
+            <Label layoutX="35.0" layoutY="105.0" prefHeight="32.0" prefWidth="143.0" text="Фамилия" textFill="#c6c6c6">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txt_lastName" layoutX="204.0" layoutY="105.0" prefHeight="32.0" prefWidth="290.0" />
+            <Label layoutX="36.0" layoutY="224.0" prefHeight="32.0" prefWidth="143.0" text="Должность" textFill="#c6c6c6">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cmb_position" layoutX="205.0" layoutY="225.0" prefHeight="32.0" prefWidth="290.0">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Оператор" />
+                     <String fx:value="Начальник расчета" />
+                     <String fx:value="Зам. ком. отряда" />
+                     <String fx:value="Командир отряда" />
+                     <String fx:value="Нач. штаба эскадрильи" />
+                     <String fx:value="Командир эскадрильи" />
+                  </FXCollections>
+               </items>
+            </ComboBox>
+            <Label fx:id="lbl_allRight" alignment="CENTER" layoutX="34.0" layoutY="266.0" prefHeight="32.0" prefWidth="461.0" text="Введите данные оператора" textAlignment="CENTER" textFill="#e4e4e4">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="534.0" prefHeight="32.0" prefWidth="123.0" text="Всего операторов" textAlignment="CENTER" textFill="#e4e4e4" />
+            <Label fx:id="lbl_allOper" layoutX="130.0" layoutY="534.0" prefHeight="32.0" prefWidth="40.0" textAlignment="CENTER" textFill="#e4e4e4" />
+            <Label layoutX="36.0" layoutY="167.0" prefHeight="32.0" prefWidth="143.0" text="Классность" textFill="#c6c6c6">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="34.0" layoutY="372.0" prefHeight="7.0" prefWidth="477.0" text="Изменение данных оператора" textFill="#f87e7e" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txt_firstNameForChange" layoutX="212.0" layoutY="409.0" prefHeight="32.0" prefWidth="290.0" />
+            <Label layoutX="41.0" layoutY="409.0" prefHeight="32.0" prefWidth="143.0" text="Имя" textFill="#c6c6c6">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="btn_findOper" layoutX="193.0" layoutY="538.0" mnemonicParsing="false" onAction="#initialize" prefHeight="4.0" prefWidth="143.0" text="Найти">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Label fx:id="lbl_operFind" alignment="CENTER" layoutX="27.0" layoutY="496.0" prefHeight="20.0" prefWidth="477.0" text="Введите данные оператора" textAlignment="CENTER" textFill="#e4e4e4">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="26.0" layoutY="14.0" prefHeight="7.0" prefWidth="477.0" text="Добавление оператора" textFill="#ff8383" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Separator layoutX="26.0" layoutY="357.0" prefHeight="4.0" prefWidth="477.0" />
+            <Button fx:id="btn_saveChangeOper" layoutX="391.0" layoutY="538.0" mnemonicParsing="false" onAction="#initialize" prefHeight="30.0" prefWidth="123.0" style="-fx-background-color: #eda678;" text="Сохранить" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="57.0" layoutY="-17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/arrow.png" />
+               </image>
+            </ImageView>
+            <ComboBox fx:id="cmb_class" layoutX="204.0" layoutY="167.0" prefHeight="32.0" prefWidth="290.0" visibleRowCount="4">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Без классности" />
+                     <String fx:value="3 класс" />
+                     <String fx:value="2 класс" />
+                     <String fx:value="1 класс" />
+                     <String fx:value="Мастер" />
+                  </FXCollections>
+               </items>
+            </ComboBox>
+            <Button fx:id="btn_saveOper" layoutX="391.0" layoutY="306.0" mnemonicParsing="false" onAction="#initialize" prefHeight="30.0" prefWidth="123.0" style="-fx-background-color: #eda678;" text="Сохранить">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <TextField fx:id="txt_lastNameForChange" layoutX="212.0" layoutY="454.0" prefHeight="32.0" prefWidth="290.0" />
+            <Label layoutX="41.0" layoutY="454.0" prefHeight="32.0" prefWidth="143.0" text="Фамилия" textFill="#c6c6c6">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ap_addFly" layoutY="98.0" prefHeight="580.0" prefWidth="528.0" style="-fx-background-color: #3d4956;" visible="false">
+         <children>
+            <TextField fx:id="txt_verifyFirstName" alignment="CENTER" layoutX="18.0" layoutY="49.0" prefHeight="32.0" prefWidth="185.0" promptText="Имя">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <Button fx:id="btn_verifybd" layoutX="408.0" layoutY="50.0" mnemonicParsing="false" onAction="#visibilityPaneForAddFly" prefHeight="30.0" prefWidth="106.0" text="Проверить">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Label alignment="CENTER" layoutX="26.0" layoutY="14.0" prefHeight="7.0" prefWidth="477.0" text="Проверьте, есть ли оператор в БД" textFill="#d3d3d3" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbl_verifyText" alignment="CENTER" layoutX="20.0" layoutY="88.0" prefHeight="20.0" prefWidth="492.0" textAlignment="CENTER" textFill="#e4e4e4">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Separator layoutX="20.0" layoutY="114.0" prefHeight="4.0" prefWidth="492.0" />
+            <AnchorPane fx:id="ap_timeOfDay1" layoutX="8.0" layoutY="123.0" prefHeight="448.0" prefWidth="510.0" visible="false">
+               <children>
+                  <Label layoutX="23.0" layoutY="93.0" prefHeight="32.0" prefWidth="123.0" text="Время полета" textFill="#c6c6c6">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txt_hour1" alignment="CENTER" layoutX="148.0" layoutY="98.0" prefHeight="20.0" prefWidth="40.0" promptText="часы" />
+                  <TextField fx:id="txt_minute1" alignment="CENTER" layoutX="192.0" layoutY="98.0" prefHeight="4.0" prefWidth="57.0" promptText="минуты" />
+                  <Label layoutX="281.0" layoutY="62.0" prefHeight="32.0" prefWidth="106.0" text="Время суток" textFill="#c6c6c6">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cmb_timeDay1" layoutX="400.0" layoutY="65.0" prefHeight="20.0" prefWidth="106.0">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="День" />
+                           <String fx:value="Ночь" />
+                        </FXCollections>
+                     </items>
+                  </ComboBox>
+                  <Label layoutX="22.0" layoutY="61.0" prefHeight="32.0" prefWidth="123.0" text="В качестве кого" textFill="#c6c6c6">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cmb_who1" layoutX="149.0" layoutY="65.0" prefHeight="25.0" prefWidth="100.0">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="ОУ" />
+                           <String fx:value="ОЦН" />
+                           <String fx:value="Инстр." />
+                        </FXCollections>
+                     </items>
+                  </ComboBox>
+                  <Label layoutX="282.0" layoutY="96.0" prefHeight="32.0" prefWidth="185.0" text="Количество управлений" textFill="#c6c6c6">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txt_contr1" alignment="CENTER" layoutX="466.0" layoutY="98.0" prefHeight="25.0" prefWidth="40.0" />
+                  <Separator layoutX="17.0" layoutY="128.0" prefHeight="4.0" prefWidth="492.0" />
+                  <Button fx:id="btn_saveFlying" layoutX="378.0" layoutY="410.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="123.0" style="-fx-background-color: #eda678;" text="Сохранить">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <DatePicker fx:id="dt_date" layoutX="167.0" layoutY="14.0" prefHeight="20.0" prefWidth="192.0" promptText="Дата вылета" />
+                  <AnchorPane fx:id="ap_timeOfDay2" layoutY="134.0" prefHeight="99.0" prefWidth="510.0" visible="false">
+                     <children>
+                        <Label layoutX="23.0" layoutY="46.0" prefHeight="32.0" prefWidth="123.0" text="Время полета" textFill="#c6c6c6">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txt_hour2" alignment="CENTER" layoutX="148.0" layoutY="51.0" prefHeight="20.0" prefWidth="40.0" promptText="часы" />
+                        <TextField fx:id="txt_minute2" alignment="CENTER" layoutX="192.0" layoutY="51.0" prefHeight="4.0" prefWidth="57.0" promptText="минуты" />
+                        <Label layoutX="281.0" layoutY="15.0" prefHeight="32.0" prefWidth="106.0" text="Время суток" textFill="#c6c6c6">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="cmb_timeDay2" layoutX="400.0" layoutY="18.0" prefHeight="20.0" prefWidth="106.0">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="День" />
+                                 <String fx:value="Ночь" />
+                              </FXCollections>
+                           </items>
+                        </ComboBox>
+                        <Label layoutX="22.0" layoutY="14.0" prefHeight="32.0" prefWidth="123.0" text="В качестве кого" textFill="#c6c6c6">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="cmb_who2" layoutX="149.0" layoutY="18.0" prefHeight="25.0" prefWidth="100.0">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="ОУ" />
+                                 <String fx:value="ОЦН" />
+                                 <String fx:value="Инстр." />
+                              </FXCollections>
+                           </items>
+                        </ComboBox>
+                        <Label layoutX="282.0" layoutY="49.0" prefHeight="32.0" prefWidth="185.0" text="Количество управлений" textFill="#c6c6c6">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txt_contr2" alignment="CENTER" layoutX="466.0" layoutY="51.0" prefHeight="25.0" prefWidth="40.0" />
+                        <Separator layoutX="16.0" layoutY="85.0" prefHeight="4.0" prefWidth="492.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="ap_timeOfDay3" layoutX="-1.0" layoutY="225.0" prefHeight="99.0" prefWidth="509.0" visible="false">
+                     <children>
+                        <Label layoutX="23.0" layoutY="46.0" prefHeight="32.0" prefWidth="123.0" text="Время полета" textFill="#c6c6c6">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txt_hour3" alignment="CENTER" layoutX="148.0" layoutY="51.0" prefHeight="20.0" prefWidth="40.0" promptText="часы" />
+                        <TextField fx:id="txt_minute3" alignment="CENTER" layoutX="192.0" layoutY="51.0" prefHeight="4.0" prefWidth="57.0" promptText="минуты" />
+                        <Label layoutX="281.0" layoutY="15.0" prefHeight="32.0" prefWidth="106.0" text="Время суток" textFill="#c6c6c6">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="cmb_timeDay3" layoutX="400.0" layoutY="18.0" prefHeight="20.0" prefWidth="106.0">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="День" />
+                                 <String fx:value="Ночь" />
+                              </FXCollections>
+                           </items>
+                        </ComboBox>
+                        <Label layoutX="22.0" layoutY="14.0" prefHeight="32.0" prefWidth="123.0" text="В качестве кого" textFill="#c6c6c6">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="cmb_who3" layoutX="149.0" layoutY="18.0" prefHeight="25.0" prefWidth="100.0">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="ОУ" />
+                                 <String fx:value="ОЦН" />
+                                 <String fx:value="Инстр." />
+                              </FXCollections>
+                           </items>
+                        </ComboBox>
+                        <Label layoutX="282.0" layoutY="49.0" prefHeight="32.0" prefWidth="185.0" text="Количество управлений" textFill="#c6c6c6">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txt_contr3" alignment="CENTER" layoutX="466.0" layoutY="51.0" prefHeight="25.0" prefWidth="40.0" />
+                        <Separator layoutX="18.0" layoutY="84.0" prefHeight="4.0" prefWidth="492.0" />
+                     </children>
+                  </AnchorPane>
+                  <Label layoutX="153.0" layoutY="321.0" prefHeight="32.0" prefWidth="185.0" text="Итого за летную смену" textFill="#c6c6c6">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbl_allHour" alignment="CENTER" layoutX="187.0" layoutY="353.0" prefHeight="32.0" prefWidth="25.0" textFill="#c6c6c6">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbl_allContr" alignment="CENTER" layoutX="207.0" layoutY="378.0" prefHeight="32.0" prefWidth="25.0" textFill="#c6c6c6">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btn_addap" layoutX="14.0" layoutY="413.0" mnemonicParsing="false" onAction="#visibilityPaneForAddFly" text="+" />
+                  <Button fx:id="btn_removeap" layoutX="44.0" layoutY="413.0" mnemonicParsing="false" onAction="#visibilityPaneForAddFly" prefHeight="25.0" prefWidth="25.0" text="-" />
+                  <Label alignment="CENTER" layoutX="218.0" layoutY="353.0" prefHeight="32.0" prefWidth="16.0" text="ч." textFill="#c6c6c6">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbl_alllMinute" alignment="CENTER" layoutX="247.0" layoutY="353.0" prefHeight="32.0" prefWidth="25.0" textFill="#c6c6c6">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="278.0" layoutY="353.0" prefHeight="32.0" prefWidth="33.0" text="мин." textFill="#c6c6c6">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="234.0" layoutY="378.0" prefHeight="32.0" prefWidth="85.0" text="управлений" textFill="#c6c6c6">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="185.0" layoutY="-17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/arrow.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="txt_verifyLastName" alignment="CENTER" layoutX="210.0" layoutY="49.0" prefHeight="32.0" prefWidth="185.0" promptText="Фамилия">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ap_viewFly" layoutY="98.0" prefHeight="152.0" prefWidth="528.0" style="-fx-background-color: #3d4956;" visible="false">
+         <children>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="315.0" layoutY="-17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/arrow.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="txt_verifyFlyFirstName" alignment="CENTER" layoutX="19.0" layoutY="59.0" prefHeight="32.0" prefWidth="185.0" promptText="Имя">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <Button fx:id="btn_verifyFlybd" layoutX="409.0" layoutY="60.0" mnemonicParsing="false" onAction="#visibilityPaneForViewFly" prefHeight="30.0" prefWidth="106.0" text="Проверить">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Label alignment="CENTER" layoutX="26.0" layoutY="24.0" prefHeight="7.0" prefWidth="477.0" text="Проверьте, есть ли оператор в БД" textFill="#d3d3d3" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbl_verifyFlyText" alignment="CENTER" layoutX="21.0" layoutY="98.0" prefHeight="20.0" prefWidth="492.0" textAlignment="CENTER" textFill="#e4e4e4">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Separator layoutX="22.0" layoutY="124.0" prefHeight="4.0" prefWidth="492.0" />
+            <TextField fx:id="txt_verifyFlyLastName" alignment="CENTER" layoutX="211.0" layoutY="59.0" prefHeight="32.0" prefWidth="185.0" promptText="Фамилия">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <AnchorPane fx:id="ap_flyMenu" layoutY="128.0" prefHeight="121.0" prefWidth="528.0" visible="false">
+               <children>
+                  <Label alignment="CENTER" layoutX="127.0" layoutY="21.0" prefHeight="35.0" prefWidth="274.0" text="Узнать налет за:" textFill="#d3d3d3" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btn_flyPeriod" layoutX="276.0" layoutY="64.0" mnemonicParsing="false" onAction="#visibilityPaneForViewFly" prefHeight="37.0" prefWidth="106.0" text="Период">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btn_flyAllTime" layoutX="401.0" layoutY="64.0" mnemonicParsing="false" onAction="#visibilityPaneForViewFly" prefHeight="37.0" prefWidth="106.0" text="Всё время">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btn_flyYear" layoutX="150.0" layoutY="64.0" mnemonicParsing="false" onAction="#visibilityPaneForViewFly" prefHeight="37.0" prefWidth="106.0" text="Год">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btn_flyMonth" layoutX="21.0" layoutY="64.0" mnemonicParsing="false" onAction="#visibilityPaneForViewFly" prefHeight="37.0" prefWidth="106.0" text="Месяц">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
+      <AnchorPane fx:id="ap_yearFly" layoutY="362.0" prefHeight="190.0" prefWidth="528.0" style="-fx-background-color: #3d4956;" visible="false">
+         <children>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="193.0" layoutY="-17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/arrow.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="26.0" layoutY="21.0" prefHeight="7.0" prefWidth="477.0" text="Налет за год" textFill="#d3d3d3" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ap_periodFly" layoutY="362.0" prefHeight="190.0" prefWidth="528.0" style="-fx-background-color: #3d4956;" visible="false">
+         <children>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="319.0" layoutY="-17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/arrow.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="26.0" layoutY="21.0" prefHeight="7.0" prefWidth="477.0" text="Налет за период" textFill="#d3d3d3" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ap_alltimeFly" layoutY="362.0" prefHeight="498.0" prefWidth="528.0" style="-fx-background-color: #3d4956;" visible="false">
+         <children>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="440.0" layoutY="-17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/arrow.png" />
+               </image>
+            </ImageView>
+            <TableView fx:id="tableFlying" prefHeight="498.0" prefWidth="528.0">
+              <columns>
+                <TableColumn fx:id="tc_date" prefWidth="118.0" text="Дата" />
+                <TableColumn fx:id="tc_who" prefWidth="94.0" text="В кач-ве кого" />
+                  <TableColumn fx:id="tc_daytime" prefWidth="85.0" text="Время суток" />
+                  <TableColumn fx:id="tc_contr" prefWidth="77.0" text="Управления" />
+                  <TableColumn fx:id="tc_hour" prefWidth="76.0" text="Часы" />
+                  <TableColumn fx:id="tc_minute" prefWidth="77.0" text="Минуты" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ap_monthFly" layoutY="362.0" prefHeight="498.0" prefWidth="528.0" style="-fx-background-color: #3d4956;">
+         <children>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="61.0" layoutY="-17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/arrow.png" />
+               </image>
+            </ImageView>
+            <ComboBox fx:id="cmb_month" cacheShape="false" layoutX="26.0" layoutY="10.0" prefHeight="30.0" prefWidth="164.0" promptText="Месяц" />
+            <ComboBox fx:id="cmb_year" cacheShape="false" layoutX="228.0" layoutY="10.0" prefHeight="30.0" prefWidth="164.0" promptText="Год" />
+            <Button fx:id="btn_monthFlyOK" layoutX="428.0" layoutY="10.0" mnemonicParsing="false" onAction="#initialize" prefHeight="30.0" prefWidth="63.0" text="OK" />
+            <TableView fx:id="tableFlying1" layoutY="51.0" prefHeight="448.0" prefWidth="528.0">
+               <columns>
+                  <TableColumn fx:id="tc_date1" prefWidth="118.0" text="Дата" />
+                  <TableColumn fx:id="tc_who1" prefWidth="94.0" text="В кач-ве кого" />
+                  <TableColumn fx:id="tc_daytime1" prefWidth="85.0" text="Время суток" />
+                  <TableColumn fx:id="tc_contr1" prefWidth="77.0" text="Управления" />
+                  <TableColumn fx:id="tc_hour1" prefWidth="76.0" text="Часы" />
+                  <TableColumn fx:id="tc_minute1" prefWidth="77.0" text="Минуты" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
